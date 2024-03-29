@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
-import addIcon from '@/public/svgs/addIcon.svg';
-import addWhiteIcon from '@/public/svgs/addWhiteIcon.svg';
+import AddIcon from '@/public/svgs/addIcon.svg';
+import AddWhiteIcon from '@/public/svgs/addWhiteIcon.svg';
 import { ModalContext } from '@/pages/folder';
 import { EDIT_TYPE, FOLDER_ADD } from '@/src/constants/modalConstants';
 
@@ -15,7 +15,7 @@ function FolderAddButton() {
   return (
     <StyledButton onClick={handleClick}>
       <span>폴더추가</span>
-      <img src={addIcon} alt="addIcon" />
+      <AddIcon alt="addIcon" />
     </StyledButton>
   );
 }
@@ -27,7 +27,7 @@ export function FolderAddButtonMobile() {
   return (
     <MobileButton onClick={handleClick}>
       <span>폴더추가</span>
-      <img src={addWhiteIcon} alt="addIcon" />
+      <AddWhiteIcon alt="addIcon" />
     </MobileButton>
   );
 }

@@ -32,7 +32,7 @@ export interface FolderSortBarProps {
 
 export interface OptionButtonProps {
   id: number;
-  svg: any;
+  SvgComponent: any;
   text: string;
   handleModalOpen: any;
 }

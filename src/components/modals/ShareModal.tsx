@@ -6,7 +6,7 @@ import {
   Title,
   Name,
 } from './ModalElements';
-import modalCloseIcon from '@/public/svgs/modalColseIcon.svg';
+import ModalCloseIcon from '@/public/svgs/modalColseIcon.svg';
 import { ModalContext } from '@/pages/folder';
 import { useContext } from 'react';
 import styled from 'styled-components';
@@ -45,7 +45,7 @@ function ShareModal() {
     <ModalContainer>
       <ModalForm>
         <CloseButton onClick={handleModalClose}>
-          <img src={modalCloseIcon} alt="closeButton" />
+          <ModalCloseIcon alt="close" />
         </CloseButton>
         <ModalInfo>
           <Title>폴더 공유</Title>

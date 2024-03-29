@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import styles from '../styles/folderOptionBar.module.css';
-import shareIcon from '@/public/svgs/shareIcon.svg';
-import renameIcon from '@/public/svgs/renameIcon.svg';
-import deleteIcon from '@/public/svgs/deleteIcon.svg';
+import ShareIcon from '@/public/svgs/shareIcon.svg';
+import RenameIcon from '@/public/svgs/renameIcon.svg';
+import DeleteIcon from '@/public/svgs/deleteIcon.svg';
 import OptionButton from './OptionButton';
 import { ModalContext } from '@/pages/folder';
 import {
@@ -47,19 +47,19 @@ function FolderOptionBar({ text, selectedFolderId }: FolderOptionBarProps) {
   const buttonProps = [
     {
       id: 1,
-      svg: shareIcon,
+      svg: ShareIcon,
       text: '공유',
       handleModalOpen: handleFolderShareModalOpen,
     },
     {
       id: 2,
-      svg: renameIcon,
+      svg: RenameIcon,
       text: '이름 변경',
       handleModalOpen: handleRenameModalOpen,
     },
     {
       id: 3,
-      svg: deleteIcon,
+      svg: DeleteIcon,
       text: '삭제',
       handleModalOpen: handleFolderDeleteModalOpen,
     },
@@ -76,7 +76,7 @@ function FolderOptionBar({ text, selectedFolderId }: FolderOptionBarProps) {
               <OptionButton
                 key={prop.id}
                 id={prop.id}
-                svg={prop.svg}
+                SvgComponent={prop.svg}
                 text={prop.text}
                 handleModalOpen={prop.handleModalOpen}
               ></OptionButton>

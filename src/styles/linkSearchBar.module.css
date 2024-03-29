@@ -27,7 +27,9 @@
 .clearButton {
   border: none;
 }
-
+.searchClear {
+  cursor: pointer;
+}
 .searchValue {
   color: var(--Linkbrary-gray60, #9fa6b2);
 

@@ -9,8 +9,8 @@ import {
   Name,
   CloseButton,
 } from './ModalElements';
-import modalCloseIcon from '@/public/svgs/modalColseIcon.svg';
-import checkedIcon from '@/public/svgs/checkIcon.svg';
+import ModalCloseIcon from '@/public/svgs/modalColseIcon.svg';
+import CheckedIcon from '@/public/svgs/checkIcon.svg';
 import { ModalContext } from '@/pages/folder';
 import useFoldersData from '@/src/hooks/useFoldersData';
 import { USERS_FOLDERS_URL } from '@/src/constants/urls';
@@ -30,7 +30,7 @@ function AddModal() {
     <ModalContainer>
       <ModalForm>
         <CloseButton onClick={handleModalClose}>
-          <img src={modalCloseIcon} alt="closeButton" />
+          <ModalCloseIcon alt="close" />
         </CloseButton>
         <ModalInfo>
           <Title>폴더에 추가</Title>
@@ -51,7 +51,7 @@ function AddModal() {
                     </FolderName>
                     <LinkNumber>{folder.link.count}개 링크</LinkNumber>
                   </FolderInfo>
-                  {isClicked && <img src={checkedIcon} alt="checkedIcon" />}
+                  {isClicked && <CheckedIcon alt="checked" />}
                 </Folder>
               )
             );

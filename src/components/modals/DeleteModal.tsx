@@ -8,7 +8,7 @@ import {
   Title,
   Name,
 } from './ModalElements';
-import modalCloseIcon from '@/public/svgs/modalColseIcon.svg';
+import ModalCloseIcon from '@/public/svgs/modalColseIcon.svg';
 import { ModalContext } from '@/pages/folder';
 
 function DeleteModal() {
@@ -21,7 +21,7 @@ function DeleteModal() {
     <ModalContainer>
       <ModalForm>
         <CloseButton onClick={handleModalClose}>
-          <img src={modalCloseIcon} alt="closeButton" />
+          <ModalCloseIcon alt="close" />
         </CloseButton>
         <ModalInfo>
           <Title>{title}</Title>

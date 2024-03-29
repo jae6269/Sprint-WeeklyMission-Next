@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import styles from '../styles/linkSearchBar.module.css';
-import searchIcon from '@/public/svgs/searchIcon.svg';
-import searchClearIcon from '@/public/svgs/searchClearIcon.svg';
+import SearchIcon from '@/public/svgs/searchIcon.svg';
+import SearchClearIcon from '@/public/svgs/searchClearIcon.svg';
 
 function LinkSearchBar({ inputValue, setInputValue }: any) {
   const inputRef = useRef<any>();
@@ -22,7 +22,7 @@ function LinkSearchBar({ inputValue, setInputValue }: any) {
   return (
     <>
       <div className={styles.searchContainer}>
-        <img className={styles.searchIcon} src={searchIcon} alt="searchIcon" />
+        <SearchIcon className={styles.searchIcon} alt="searchIcon" />
         <input
           id="search--input"
           className={styles.searchInput}
@@ -35,10 +35,9 @@ function LinkSearchBar({ inputValue, setInputValue }: any) {
             className={styles.clearButton}
             onClick={handleClickInputValueClear}
           >
-            <img
-              src={searchClearIcon}
+            <SearchClearIcon
+              className={styles.searchClear}
               alt="search-clear"
-              className="search-clear--icon"
             />
           </button>
         )}

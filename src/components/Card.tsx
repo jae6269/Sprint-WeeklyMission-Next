@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import styles from '../styles/card.module.css';
-import noneImg from '@/public/svgs/noneImg.svg';
-import starIcon from '@/public/svgs/starIcon.svg';
-import meatballsIcon from '@/public/svgs/meatballsIcon.svg';
+import NoneImg from '@/public/svgs/noneImg.svg';
+import StarIcon from '@/public/svgs/starIcon.svg';
+import MeatballsIcon from '@/public/svgs/meatballsIcon.svg';
 
 import PopOver from '@/src/components/PopOver';
 import { CardProps } from '@/src/types/interfaces/props';
@@ -12,7 +12,7 @@ import { ClickFunctionType } from '@/src/types/functionsType';
 function Card({
   id,
   time,
-  imgUrl = noneImg,
+  imgUrl = NoneImg,
   title,
   description,
   date,
@@ -30,14 +30,14 @@ function Card({
       <a className={styles.card} key={id} target="_blank" rel="noreferrer">
         <div className={styles.cardImg}>
           <img className={styles.cardBackground} src={imgUrl} alt={title}></img>
-          <img className={styles.starIcon} src={starIcon} alt="Favorites" />
+          <StarIcon className={styles.starIcon} alt="Favorites" />
         </div>
 
         <div className={styles.texts}>
           <div className={styles.time}>
             <p>{time}</p>
             <button onClick={handleClick}>
-              <img src={meatballsIcon} alt="Menu" />
+              <MeatballsIcon alt="Menu" />
             </button>
             {isPopOverOpen && <PopOver id={id} url={url} />}
           </div>

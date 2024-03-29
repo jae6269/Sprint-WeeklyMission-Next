@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 import { FOLDER_ADD, FOLDER_RENAME } from '@/src/constants/modalConstants';
-import modalCloseIcon from '@/public/svgs/modalColseIcon.svg';
+import ModalCloseIcon from '@/public/svgs/modalColseIcon.svg';
 import { ModalContext } from '@/pages/folder';
 import {
   ModalContainer,
@@ -21,7 +21,7 @@ function EditModal() {
       <ModalForm>
         <Name>{title}</Name>
         <CloseButton onClick={handleModalClose}>
-          <img src={modalCloseIcon} alt="closeButton" />
+          <ModalCloseIcon alt="close" />
         </CloseButton>
         <Input type="text" name={title} placeholder="내용 입력" />
 

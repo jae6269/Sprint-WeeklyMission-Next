@@ -1,6 +1,6 @@
 import { useContext, useRef } from 'react';
 import styles from '../styles/linkAddBar.module.css';
-import linkIcon from '@/public/svgs/linkIcon.svg';
+import LinkIcon from '@/public/svgs/linkIcon.svg';
 import Button from './Button';
 import { ModalContext } from '@/pages/folder';
 import { ADD_TYPE } from '../constants/modalConstants';
@@ -24,16 +24,12 @@ function LinkAddBar() {
     <div className={styles.container}>
       <form className={styles.bar} id="link-add">
         <div className={styles.barContents}>
-          <img
-            className="link-add__bar--img"
-            src={linkIcon}
-            alt="linkIcon"
-          ></img>
+          <LinkIcon className="link-add__bar--img" alt="linkIcon" />
           <input
             className={styles.linkInput}
             placeholder={placeholder}
             id="link-add__bar--input"
-          ></input>
+          />
         </div>
         <Button type="submit" onClick={handleLinkAddModalOpen}>
           추가하기
