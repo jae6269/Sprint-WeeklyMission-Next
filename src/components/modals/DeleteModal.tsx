@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import {
   ModalContainer,
   ModalForm,
@@ -7,9 +8,8 @@ import {
   Title,
   Name,
 } from './ModalElements';
-import modalCloseIcon from '../../assets/modalColseIcon.svg';
-import { useContext } from 'react';
-import { ModalContext } from '../../pages/FolderPage/FolderPage';
+import modalCloseIcon from '@/public/svgs/modalColseIcon.svg';
+import { ModalContext } from '@/pages/folder';
 
 function DeleteModal() {
   const { modalPurpose, handleModalClose } = useContext(ModalContext)!;

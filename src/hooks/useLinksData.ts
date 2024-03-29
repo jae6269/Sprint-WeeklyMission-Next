@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
+import noneImg from '@/public/svgs/noneImg.svg';
 import { getLastTime, formatDate } from '../utils/timeCalculater';
-import noneImg from '../assets/noneImg.svg';
 import { SharedPageLink } from '../types/interfaces/fetchDatas';
 
 /*

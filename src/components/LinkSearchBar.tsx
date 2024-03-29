@@ -1,7 +1,7 @@
 import { useRef } from 'react';
-import searchIcon from '../assets/searchIcon.svg';
-import searchClearIcon from '../assets/searchClearIcon.svg';
-import '../styles/linkSearchBar.css';
+import '@/styles/components-styles/linkSearchBar.css';
+import searchIcon from '@/public/svgs/searchIcon.svg';
+import searchClearIcon from '@/public/svgs/searchClearIcon.svg';
 
 function LinkSearchBar({ inputValue, setInputValue }: any) {
   const inputRef = useRef<any>();

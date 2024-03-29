@@ -1,7 +1,7 @@
 import SortButton from './SortButton';
-import '../styles/folderSortBar.css';
+import '@/styles/components-styles/folderSortBar.css';
 import FolderAddButton from './FolderAddButton';
-import { FolderSortBarProps } from '../../../types/interfaces/props';
+import { FolderSortBarProps } from '../types/interfaces/props';
 
 function FolderSortBar({
   folders,

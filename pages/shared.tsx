@@ -1,8 +1,9 @@
-import Footer from '../../components/Footer';
-import Header from '../../components/Header';
-import Profile from './components/Profile';
-import CardList from '../../components/CardList';
-import { SAMPLE_USER_URL } from '../../constants/urls';
+import Footer from '@/src/components/Footer';
+import Header from '@/src/components/Header';
+import Profile from '@/src/components/Profile';
+import CardList from '@/src/components/CardList';
+import { SAMPLE_USER_URL } from '@/src/constants/urls';
+
 function Shared() {
   return (
     <>

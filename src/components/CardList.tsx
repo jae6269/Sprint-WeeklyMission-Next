@@ -1,13 +1,12 @@
 import { useState } from 'react';
-import '../styles/cardList.css';
+import '@/styles/components-styles/cardList.css';
 import Card from './Card';
-import useCardsData from '../hooks/useCardsData';
 import LinkSearchBar from './LinkSearchBar';
-
+import useCardsData from '../hooks/useCardsData';
+import { useDebounce } from '../hooks/useDebounce';
 import { CARDS } from '../constants/fetchConstants';
 import { SAMPLE_FOLDER_URL } from '../constants/urls';
 import { SharedPageLink } from '../types/interfaces/fetchDatas';
-import { useDebounce } from '../hooks/useDebounce';
 
 function CardList() {
   const [inputValue, setInputValue] = useState<string>('');

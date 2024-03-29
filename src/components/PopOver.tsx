@@ -1,13 +1,13 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
 import {
   ADD_TYPE,
   DELETE_TYPE,
   LINK_DELETE,
-} from '../../../constants/modalConstants';
-import { useContext } from 'react';
-import { ModalContext } from '../FolderPage';
-import { PopOverProps } from '../../../types/interfaces/props';
-import { ClickFunctionType } from '../../../types/functionsType';
+} from '../constants/modalConstants';
+import { ModalContext } from '@/pages/folder';
+import { PopOverProps } from '../types/interfaces/props';
+import { ClickFunctionType } from '../types/functionsType';
 
 function PopOver({ id, url }: PopOverProps) {
   const { handleModalOpen } = useContext(ModalContext)!;

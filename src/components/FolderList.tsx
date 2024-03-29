@@ -1,13 +1,14 @@
-import LinkSearchBar from './LinkSearchBar';
-import '../styles/folderList.css';
 import { useState } from 'react';
-import FolderSortBar from '../pages/FolderPage/components/FolderSortBar';
-import FolderOptionBar from '../pages/FolderPage/components/FolderOptionBar';
-import { USERS_LINKS_URL, USERS_FOLDERS_URL } from '../constants/urls';
+import '@/styles/components-styles/folderList.css';
+import LinkSearchBar from './LinkSearchBar';
+import FolderSortBar from './FolderSortBar';
+import FolderOptionBar from './FolderOptionBar';
+import { FolderAddButtonMobile } from './FolderAddButton';
 import Card from './Card';
+import { USERS_LINKS_URL, USERS_FOLDERS_URL } from '../constants/urls';
 import useLinksData from '../hooks/useLinksData';
 import useFoldersData from '../hooks/useFoldersData';
-import { FolderAddButtonMobile } from '../pages/FolderPage/components/FolderAddButton';
+
 import { ClickSortButton } from '../types/functionsType';
 import { useDebounce } from '../hooks/useDebounce';
 

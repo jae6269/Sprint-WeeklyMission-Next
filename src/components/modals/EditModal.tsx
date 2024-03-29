@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import { FOLDER_ADD, FOLDER_RENAME } from '../../constants/modalConstants';
-import modalCloseIcon from '../../assets/modalColseIcon.svg';
-import { ModalContext } from '../../pages/FolderPage/FolderPage';
 import { useContext } from 'react';
+import styled from 'styled-components';
+import { FOLDER_ADD, FOLDER_RENAME } from '@/src/constants/modalConstants';
+import modalCloseIcon from '@/public/svgs/modalColseIcon.svg';
+import { ModalContext } from '@/pages/folder';
 import {
   ModalContainer,
   ModalForm,

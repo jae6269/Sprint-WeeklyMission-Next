@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { OptionButtonProps } from '../../../types/interfaces/props';
+import { OptionButtonProps } from '../types/interfaces/props';
 
 function OptionButton({ id, svg, text, handleModalOpen }: OptionButtonProps) {
   return (

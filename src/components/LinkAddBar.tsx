@@ -1,10 +1,10 @@
 import { useContext, useRef } from 'react';
-import linkIcon from '../../../assets/linkIcon.svg';
-import Button from '../../../components/Button';
-import '../../../styles/linkAddBar.css';
-import { ModalContext } from '../FolderPage';
-import { ADD_TYPE } from '../../../constants/modalConstants';
-import { ClickFunctionType } from '../../../types/functionsType';
+import '@/styles/components-styles/linkAddBar.css';
+import linkIcon from '@/public/svgs/linkIcon.svg';
+import Button from './Button';
+import { ModalContext } from '@/pages/folder';
+import { ADD_TYPE } from '../constants/modalConstants';
+import { ClickFunctionType } from '../types/functionsType';
 
 /*
   폴더페이지에서 Header 컴포넌트 아래의

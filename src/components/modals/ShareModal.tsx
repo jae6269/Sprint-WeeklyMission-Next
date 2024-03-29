@@ -6,9 +6,9 @@ import {
   Title,
   Name,
 } from './ModalElements';
-import modalCloseIcon from '../../assets/modalColseIcon.svg';
+import modalCloseIcon from '@/public/svgs/modalColseIcon.svg';
+import { ModalContext } from '@/pages/folder';
 import { useContext } from 'react';
-import { ModalContext } from '../../pages/FolderPage/FolderPage';
 import styled from 'styled-components';
 import { SHARE_BUTTONS } from '../../constants/modalConstants';
 import {

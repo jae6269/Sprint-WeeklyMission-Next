@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/header.css';
+import '@/styles/components-styles/header.css';
 import Profile from './Information';
 import { HeaderProfileProps } from '../types/interfaces/props';
 function Header({ url }: HeaderProfileProps) {

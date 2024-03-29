@@ -1,3 +1,4 @@
+import { useContext, useState } from 'react';
 import styled from 'styled-components';
 import {
   ModalContainer,
@@ -8,13 +9,12 @@ import {
   Name,
   CloseButton,
 } from './ModalElements';
-import modalCloseIcon from '../../assets/modalColseIcon.svg';
-import checkedIcon from '../../assets/checkIcon.svg';
-import { useContext, useState } from 'react';
-import { ModalContext } from '../../pages/FolderPage/FolderPage';
-import useFoldersData from '../../hooks/useFoldersData';
-import { USERS_FOLDERS_URL } from '../../constants/urls';
-import { ClickFolderButton } from '../../types/functionsType';
+import modalCloseIcon from '@/public/svgs/modalColseIcon.svg';
+import checkedIcon from '@/public/svgs/checkIcon.svg';
+import { ModalContext } from '@/pages/folder';
+import useFoldersData from '@/src/hooks/useFoldersData';
+import { USERS_FOLDERS_URL } from '@/src/constants/urls';
+import { ClickFolderButton } from '@/src/types/functionsType';
 
 function AddModal() {
   const [clickedFolderId, setClickedFolderId] = useState<number>();

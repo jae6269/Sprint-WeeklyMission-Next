@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { ClickFunctionType } from '../../../types/functionsType';
-import { SortButtonProps } from '../../../types/interfaces/props';
+import { ClickFunctionType } from '../types/functionsType';
+import { SortButtonProps } from '../types/interfaces/props';
 /*
   즐겨찾기 버튼의 styled component 입니다.
 */

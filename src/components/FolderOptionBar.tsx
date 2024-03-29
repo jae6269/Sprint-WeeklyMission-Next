@@ -1,18 +1,18 @@
-import '../styles/folderOptionBar.css';
+import { useContext } from 'react';
+import '@/styles/components-styles/folderOptionBar.css';
 import shareIcon from '../../../assets/shareIcon.svg';
 import renameIcon from '../../../assets/renameIcon.svg';
 import deleteIcon from '../../../assets/deleteIcon.svg';
 import OptionButton from './OptionButton';
-import { useContext } from 'react';
-import { ModalContext } from '../FolderPage';
+import { ModalContext } from '@/pages/folder';
 import {
   DELETE_TYPE,
   EDIT_TYPE,
   FOLDER_DELETE,
   FOLDER_RENAME,
   SHARE_TYPE,
-} from '../../../constants/modalConstants';
-import { FolderOptionBarProps } from '../../../types/interfaces/props';
+} from '../constants/modalConstants';
+import { FolderOptionBarProps } from '../types/interfaces/props';
 /*
   폴더의 이름과 공유, 이름변경, 삭제 버튼이 표시되는
   FolderOptionBar 컴포넌트.

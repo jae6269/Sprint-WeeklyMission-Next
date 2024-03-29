@@ -1,9 +1,9 @@
 import React from 'react';
-import '../../../styles/profile.css';
-import useCardsData from '../../../hooks/useCardsData';
+import '@/styles/components-styles/profile.css';
+import useCardsData from '../hooks/useCardsData';
+import { PROFILE } from '../constants/fetchConstants';
+import { SAMPLE_FOLDER_URL } from '../constants/urls';
 
-import { PROFILE } from '../../../constants/fetchConstants';
-import { SAMPLE_FOLDER_URL } from '../../../constants/urls';
 function Profile() {
   const ownerInfo: any = useCardsData(PROFILE, SAMPLE_FOLDER_URL);
   const { ownerImg, ownerName, folderName } = ownerInfo;

@@ -1,21 +1,21 @@
 import { useState, createContext, useEffect, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
-import FolderList from '../../components/FolderList';
-import Footer from '../../components/Footer';
-import Header from '../../components/Header';
-import LinkAddBar from './components/LinkAddBar';
-import EditModal from '../../components/modals/EditModal';
-import DeleteModal from '../../components/modals/DeleteModal';
-import ShareModal from '../../components/modals/ShareModal';
-import AddModal from '../../components/modals/AddModal';
+import FolderList from '@/src/components/FolderList';
+import Footer from '@/src/components/Footer';
+import Header from '@/src/components/Header';
+import LinkAddBar from '@/src/components/LinkAddBar';
+import EditModal from '@/src/components/modals/EditModal';
+import DeleteModal from '@/src/components/modals/DeleteModal';
+import ShareModal from '@/src/components/modals/ShareModal';
+import AddModal from '@/src/components/modals/AddModal';
 import {
   ADD_TYPE,
   DELETE_TYPE,
   EDIT_TYPE,
   SHARE_TYPE,
-} from '../../constants/modalConstants';
-import { USER_URL } from '../../constants/urls';
-import { ModalClose, ModalOpen } from '../../types/functionsType';
+} from '@/src/constants/modalConstants';
+import { USER_URL } from '@/src/constants/urls';
+import { ModalClose, ModalOpen } from '@/src/types/functionsType';
 
 export const ModalContext = createContext<{
   modalType: string;

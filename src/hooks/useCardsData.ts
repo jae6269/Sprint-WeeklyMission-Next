@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { formatDate, getLastTime } from '../utils/timeCalculater';
-import { useEffect } from 'react';
 import { CARDS, PROFILE } from '../constants/fetchConstants';
 import {
   SharedPageFolderOwner,
   SharedPageLink,
 } from '../types/interfaces/fetchDatas';
+
 function useCardsData(section: string, url: string) {
   const [owner, setOwner] = useState<SharedPageFolderOwner>({
     ownerImg: '',

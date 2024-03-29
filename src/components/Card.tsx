@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import '../styles/card.css';
-import noneImg from '../assets/noneImg.svg';
-import starIcon from '../assets/starIcon.svg';
-import meatballsIcon from '../assets/meatballsIcon.svg';
+import '@/styles/components-styles/card.css';
+import noneImg from '@/public/svgs/noneImg.svg';
+import starIcon from '@/public/svgs/starIcon.svg';
+import meatballsIcon from '@/public/svgs/meatballsIcon.svg';
 
-import PopOver from '../pages/FolderPage/components/PopOver';
-import { CardProps } from '../types/interfaces/props';
-import { ClickFunctionType } from '../types/functionsType';
+import PopOver from '@/src/components/PopOver';
+import { CardProps } from '@/src/types/interfaces/props';
+import { ClickFunctionType } from '@/src/types/functionsType';
 
 function Card({
   id,
