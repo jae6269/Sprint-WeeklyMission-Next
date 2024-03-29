@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import '@/styles/components-styles/linkSearchBar.css';
+import styles from '../styles/linkSearchBar.module.css';
 import searchIcon from '@/public/svgs/searchIcon.svg';
 import searchClearIcon from '@/public/svgs/searchClearIcon.svg';
 
@@ -21,18 +21,18 @@ function LinkSearchBar({ inputValue, setInputValue }: any) {
 
   return (
     <>
-      <div className="cards-container__search">
-        <img className="search--icon" src={searchIcon} alt="searchIcon" />
+      <div className={styles.searchContainer}>
+        <img className={styles.searchIcon} src={searchIcon} alt="searchIcon" />
         <input
           id="search--input"
-          className="search--input"
+          className={styles.searchInput}
           ref={inputRef}
           placeholder={placeholder}
           onChange={handleInputValueChange}
         />
         {inputValue && (
           <button
-            className="search-clear--button"
+            className={styles.clearButton}
             onClick={handleClickInputValueClear}
           >
             <img
@@ -44,7 +44,7 @@ function LinkSearchBar({ inputValue, setInputValue }: any) {
         )}
       </div>
       {inputValue && (
-        <p className="search--value">
+        <p className={styles.searchValue}>
           <span>{inputValue}</span>으로 검색한 결과입니다.
         </p>
       )}

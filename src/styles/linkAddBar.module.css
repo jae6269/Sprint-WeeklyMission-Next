@@ -1,4 +1,4 @@
-.link-add {
+.container {
   padding: 3.75rem 0 5.625rem 0;
   display: flex;
   justify-content: center;
@@ -9,7 +9,7 @@
   }
 }
 
-.link-add__bar {
+.bar {
   width: 50rem;
   padding: 1rem 1.25rem;
   display: flex;
@@ -26,11 +26,12 @@
   }
 }
 
-.link-add__bar div {
+.barContents {
   display: flex;
   gap: 0.75rem;
 }
-.link-add__bar--input {
+
+.linkInput {
   outline: none;
   border: none;
   color: var(--Linkbrary-gray60, #9fa6b2);

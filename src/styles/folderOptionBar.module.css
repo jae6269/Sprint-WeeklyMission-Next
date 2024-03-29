@@ -1,10 +1,10 @@
-.folder__option-bar {
+.optionBar {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.folder__option-bar--text {
+.text {
   color: var(--black);
 
   font-family: Pretendard;
@@ -14,7 +14,7 @@
   line-height: normal;
   letter-spacing: -0.2px;
 }
-.folder__option-bar--buttons {
+.buttons {
   display: flex;
   justify-content: center;
   align-items: center;

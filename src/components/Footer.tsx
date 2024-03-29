@@ -1,18 +1,22 @@
-import React from 'react';
-import '@/styles/components-styles/footer.css';
+import Link from 'next/link';
+import styles from '../styles/footer.module.css';
 
 function Footer() {
   return (
     <>
       <footer>
-        <nav className="footer__bar">
-          <div className="footer__bar--left">©codeit - 2023</div>
-          <div className="footer__bar--center">
-            <a href="/privacy">Privacy Policy</a>
-            <a href="/faq">FAQ</a>
+        <nav className={styles.footerBar}>
+          <div className={styles.left}>©codeit - 2023</div>
+          <div className={styles.center}>
+            <Link className={styles.centerLink} href="/privacy">
+              Privacy Policy
+            </Link>
+            <Link className={styles.centerLink} href="/faq">
+              FAQ
+            </Link>
           </div>
-          <div className="footer__bar--right">
-            <a href="https://www.facebook.com">
+          <div className={styles.right}>
+            <Link className={styles.rightLinks} href="https://www.facebook.com">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -27,8 +31,8 @@ function Footer() {
                   fill="white"
                 />
               </svg>
-            </a>
-            <a href="https://twitter.com">
+            </Link>
+            <Link className={styles.rightLinks} href="https://twitter.com">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -41,8 +45,8 @@ function Footer() {
                   fill="white"
                 />
               </svg>
-            </a>
-            <a href="https://www.youtube.com">
+            </Link>
+            <Link className={styles.rightLinks} href="https://www.youtube.com">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -62,8 +66,11 @@ function Footer() {
                   </clipPath>
                 </defs>
               </svg>
-            </a>
-            <a href="https://www.instagram.com">
+            </Link>
+            <Link
+              className={styles.rightLinks}
+              href="https://www.instagram.com"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -76,7 +83,7 @@ function Footer() {
                   fill="white"
                 />
               </svg>
-            </a>
+            </Link>
           </div>
         </nav>
       </footer>

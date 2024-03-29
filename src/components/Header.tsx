@@ -1,13 +1,15 @@
 import React from 'react';
-import '@/styles/components-styles/header.css';
+import Link from 'next/link';
+import styles from '../styles/header.module.css';
 import Profile from './Information';
 import { HeaderProfileProps } from '../types/interfaces/props';
+
 function Header({ url }: HeaderProfileProps) {
   return (
     <>
       <header>
         <nav>
-          <a className="nav__logo" href="/">
+          <Link className={styles.navLogo} href="/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="133"
@@ -52,7 +54,7 @@ function Header({ url }: HeaderProfileProps) {
                 fill="#6D6AFE"
               />
             </svg>
-          </a>
+          </Link>
           <Profile url={url}></Profile>
         </nav>
       </header>

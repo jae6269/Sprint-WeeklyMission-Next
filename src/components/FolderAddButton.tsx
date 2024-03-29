@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import addIcon from '../../../assets/addIcon.svg';
-import addWhiteIcon from '../../../assets/addWhiteIcon.svg';
-import { ModalContext } from '@/pages/folder';
 import { useContext } from 'react';
+import styled from 'styled-components';
+import addIcon from '@/public/svgs/addIcon.svg';
+import addWhiteIcon from '@/public/svgs/addWhiteIcon.svg';
+import { ModalContext } from '@/pages/folder';
 import { EDIT_TYPE, FOLDER_ADD } from '@/src/constants/modalConstants';
 
 //styled-components로 구현한 폴더추가 버튼입니다.

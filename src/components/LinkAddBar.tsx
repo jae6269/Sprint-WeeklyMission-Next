@@ -1,5 +1,5 @@
 import { useContext, useRef } from 'react';
-import '@/styles/components-styles/linkAddBar.css';
+import styles from '../styles/linkAddBar.module.css';
 import linkIcon from '@/public/svgs/linkIcon.svg';
 import Button from './Button';
 import { ModalContext } from '@/pages/folder';
@@ -21,16 +21,16 @@ function LinkAddBar() {
     handleModalOpen(ADD_TYPE, link);
   };
   return (
-    <div className="link-add">
-      <form className="link-add__bar" id="link-add">
-        <div>
+    <div className={styles.container}>
+      <form className={styles.bar} id="link-add">
+        <div className={styles.barContents}>
           <img
             className="link-add__bar--img"
             src={linkIcon}
             alt="linkIcon"
           ></img>
           <input
-            className="link-add__bar--input"
+            className={styles.linkInput}
             placeholder={placeholder}
             id="link-add__bar--input"
           ></input>

@@ -1,5 +1,5 @@
 import SortButton from './SortButton';
-import '@/styles/components-styles/folderSortBar.css';
+import styles from '../styles/folderSortBar.module.css';
 import FolderAddButton from './FolderAddButton';
 import { FolderSortBarProps } from '../types/interfaces/props';
 
@@ -9,8 +9,8 @@ function FolderSortBar({
   selectedId,
 }: FolderSortBarProps) {
   return (
-    <div className="folder__sort-bar">
-      <div className="folder__sort-bar--sort-buttons">
+    <div className={styles.sortBar}>
+      <div className={styles.buttons}>
         {folders.map((folder) => (
           <SortButton
             key={folder.id}

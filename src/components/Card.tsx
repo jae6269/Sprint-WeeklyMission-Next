@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '@/styles/components-styles/card.css';
+import styles from '../styles/card.module.css';
 import noneImg from '@/public/svgs/noneImg.svg';
 import starIcon from '@/public/svgs/starIcon.svg';
 import meatballsIcon from '@/public/svgs/meatballsIcon.svg';
@@ -25,22 +25,28 @@ function Card({
   };
 
   return (
-    <a className="card" key={id} href={url} target="_blank" rel="noreferrer">
-      <div className="card__img">
-        <img className="card__img--background" src={imgUrl} alt={title}></img>
-        <img className="card__img--star-icon" src={starIcon} alt="Favorites" />
+    <a
+      className={styles.card}
+      key={id}
+      href={url}
+      target="_blank"
+      rel="noreferrer"
+    >
+      <div className={styles.cardImg}>
+        <img className={styles.cardBackground} src={imgUrl} alt={title}></img>
+        <img className={styles.starIcon} src={starIcon} alt="Favorites" />
       </div>
 
-      <div className="card__texts">
-        <div className="card__texts--time">
+      <div className={styles.texts}>
+        <div className={styles.time}>
           <p>{time}</p>
           <button onClick={handleClick}>
             <img src={meatballsIcon} alt="Menu" />
           </button>
           {isPopOverOpen && <PopOver id={id} url={url} />}
         </div>
-        <p className="card__texts--description">{description}</p>
-        <p className="card__texts--date">{date}</p>
+        <p className={styles.description}>{description}</p>
+        <p className={styles.date}>{date}</p>
       </div>
     </a>
   );

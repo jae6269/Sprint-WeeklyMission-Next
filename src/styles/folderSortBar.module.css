@@ -1,4 +1,4 @@
-.folder__sort-bar {
+.sortBar {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -7,7 +7,7 @@
   gap: auto;
 }
 
-.folder__sort-bar--sort-buttons {
+.buttons {
   display: flex;
   justify-content: flex-start;
   align-items: center;

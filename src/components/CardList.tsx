@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '@/styles/components-styles/cardList.css';
+import styles from '../styles/cardList.module.css';
 import Card from './Card';
 import LinkSearchBar from './LinkSearchBar';
 import useCardsData from '../hooks/useCardsData';
@@ -14,12 +14,12 @@ function CardList() {
   const cardsArray = useCardsData(CARDS, SAMPLE_FOLDER_URL) as SharedPageLink[];
 
   return (
-    <div className="cards-container">
+    <div className={styles.cardsContainer}>
       <LinkSearchBar
         inputValue={inputValue}
         setInputValue={setInputValue}
       ></LinkSearchBar>
-      <div className="cards-container__cards-list">
+      <div className={styles.cardsList}>
         {cardsArray &&
           cardsArray
             .filter((card) => {

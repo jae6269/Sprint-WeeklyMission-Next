@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import '@/styles/components-styles/folderOptionBar.css';
-import shareIcon from '../../../assets/shareIcon.svg';
-import renameIcon from '../../../assets/renameIcon.svg';
-import deleteIcon from '../../../assets/deleteIcon.svg';
+import styles from '../styles/folderOptionBar.module.css';
+import shareIcon from '@/public/svgs/shareIcon.svg';
+import renameIcon from '@/public/svgs/renameIcon.svg';
+import deleteIcon from '@/public/svgs/deleteIcon.svg';
 import OptionButton from './OptionButton';
 import { ModalContext } from '@/pages/folder';
 import {
@@ -66,9 +66,9 @@ function FolderOptionBar({ text, selectedFolderId }: FolderOptionBarProps) {
   ];
 
   return (
-    <div className="folder__option-bar">
-      <span className="folder__option-bar--text">{text}</span>
-      <div className="folder__option-bar--buttons">
+    <div className={styles.optionBar}>
+      <span className={styles.text}>{text}</span>
+      <div className={styles.buttons}>
         {
           //id 가 1인 '전체'폴더가 선택되면 옵션 버튼이 안보이도록 설정.
           selectedFolderId !== 1 &&

@@ -1,4 +1,4 @@
-.cards-container__search {
+.searchContainer {
   display: flex;
   width: 66.25rem;
   padding: 0.9375rem 1rem;
@@ -13,22 +13,22 @@
     width: 100%;
   }
 }
-.search--icon {
+.searchIcon {
   width: 1rem;
   height: 1rem;
 }
-.search--input {
+.searchInput {
   width: 100%;
   border: none;
   outline: none;
   background: #f5f5f5;
 }
 
-.search-clear--button {
+.clearButton {
   border: none;
 }
 
-.search--value {
+.searchValue {
   color: var(--Linkbrary-gray60, #9fa6b2);
 
   font-size: 32px;
@@ -37,6 +37,6 @@
   line-height: normal;
   letter-spacing: -0.2px;
 }
-.search--value span {
+.searchValue span {
   color: var(--Linkbrary-gray100, #373740);
 }

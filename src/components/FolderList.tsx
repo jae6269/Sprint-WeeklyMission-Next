@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '@/styles/components-styles/folderList.css';
+import styles from '../styles/folderList.module.css';
 import LinkSearchBar from './LinkSearchBar';
 import FolderSortBar from './FolderSortBar';
 import FolderOptionBar from './FolderOptionBar';
@@ -37,13 +37,13 @@ function FolderList() {
   };
 
   return (
-    <div className="folders-container">
-      <div className="folders">
+    <div className={styles.foldersContainer}>
+      <div className={styles.folders}>
         <LinkSearchBar
           inputValue={inputValue}
           setInputValue={setInputValue}
         ></LinkSearchBar>
-        <div className="folder-list">
+        <div className={styles.folderList}>
           <FolderSortBar
             folders={folders}
             handleClick={handleSortButtonClick}
@@ -57,11 +57,11 @@ function FolderList() {
           {
             //links의 유무에 따라서 랜더링
             links.length === 0 ? (
-              <div className="none-list">
-                <p className="none-list__text">저장된 링크가 없습니다</p>
+              <div className={styles.noneList}>
+                <p className={styles.noneText}>저장된 링크가 없습니다</p>
               </div>
             ) : (
-              <div className="folder-list__links">
+              <div className={styles.links}>
                 {links
                   .filter((card) => {
                     return (
