@@ -4,6 +4,9 @@ export const EMAIL_PLACEHOLDER = 'Enter email address';
 export const PW_PLACEHOLDER = 'Enter password';
 export const PW_REPEAT_PLACEHOLDER = 'Enter password again';
 
+export const PASSWORD_EMPTY_ERROR_MESSAGE = '비밀번호를 입력해주세요.';
+export const PASSWORD_MISMATCH_ERROR_MESSAGE: string =
+  '비밀번호가 일치하지 않습니다.';
 const PASSWORD_ERROR_MESSAGE =
   '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.';
 
@@ -16,7 +19,7 @@ export const EMAIL_VALIDATE = {
 };
 
 export const PASSWORD_VALIDATE = {
-  required: PASSWORD_ERROR_MESSAGE,
+  required: PASSWORD_EMPTY_ERROR_MESSAGE,
   pattern: {
     value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
     message: PASSWORD_ERROR_MESSAGE,

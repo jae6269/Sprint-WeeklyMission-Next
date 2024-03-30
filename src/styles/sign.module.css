@@ -1,0 +1,23 @@
+.signBackground {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--Linkbrary-bg, #f0f6ff);
+}
+
+.formContainer {
+  display: flex;
+  width: 25rem;
+  padding: 14.875rem 0 15.75rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    padding: 7.5rem 2rem 14.5625rem 2rem;
+    gap: 1.875rem;
+  }
+}
