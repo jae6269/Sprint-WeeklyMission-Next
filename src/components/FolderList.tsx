@@ -39,10 +39,7 @@ function FolderList() {
   return (
     <div className={styles.foldersContainer}>
       <div className={styles.folders}>
-        <LinkSearchBar
-          inputValue={inputValue}
-          setInputValue={setInputValue}
-        ></LinkSearchBar>
+        <LinkSearchBar inputValue={inputValue} setInputValue={setInputValue} />
         <div className={styles.folderList}>
           <FolderSortBar
             folders={folders}

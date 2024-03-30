@@ -15,10 +15,7 @@ function CardList() {
 
   return (
     <div className={styles.cardsContainer}>
-      <LinkSearchBar
-        inputValue={inputValue}
-        setInputValue={setInputValue}
-      ></LinkSearchBar>
+      <LinkSearchBar inputValue={inputValue} setInputValue={setInputValue} />
       <div className={styles.cardsList}>
         {cardsArray &&
           cardsArray

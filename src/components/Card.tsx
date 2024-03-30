@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from '../styles/card.module.css';
 import NoneImg from '@/public/svgs/noneImg.svg';
 import StarIcon from '@/public/svgs/starIcon.svg';
@@ -26,25 +27,23 @@ function Card({
   };
 
   return (
-    <Link href={url} legacyBehavior>
-      <a className={styles.card} key={id} target="_blank" rel="noreferrer">
-        <div className={styles.cardImg}>
-          <img className={styles.cardBackground} src={imgUrl} alt={title}></img>
-          <StarIcon className={styles.starIcon} alt="Favorites" />
-        </div>
+    <Link className={styles.card} href={url} target="_blank" rel="noreferrer">
+      <div className={styles.cardImg}>
+        <img className={styles.cardBackground} src={imgUrl} alt={title} />
+        <StarIcon className={styles.starIcon} alt="Favorites" />
+      </div>
 
-        <div className={styles.texts}>
-          <div className={styles.time}>
-            <p>{time}</p>
-            <button onClick={handleClick}>
-              <MeatballsIcon alt="Menu" />
-            </button>
-            {isPopOverOpen && <PopOver id={id} url={url} />}
-          </div>
-          <p className={styles.description}>{description}</p>
-          <p className={styles.date}>{date}</p>
+      <div className={styles.texts}>
+        <div className={styles.time}>
+          <p>{time}</p>
+          <button onClick={handleClick}>
+            <MeatballsIcon alt="Menu" />
+          </button>
+          {isPopOverOpen && <PopOver id={id} url={url} />}
         </div>
-      </a>
+        <p className={styles.description}>{description}</p>
+        <p className={styles.date}>{date}</p>
+      </div>
     </Link>
   );
 }

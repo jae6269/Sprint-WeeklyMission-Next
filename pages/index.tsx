@@ -6,6 +6,8 @@ export default function Home() {
     <div className={styles.container}>
       <Link href={'/folder'}>Folder Page</Link>
       <Link href={'/shared'}>Shared Page</Link>
+      <Link href={'/signin'}>로그인</Link>
+      <Link href={'/signup'}>회원가입</Link>
     </div>
   );
 }
