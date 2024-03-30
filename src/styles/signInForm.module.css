@@ -33,6 +33,7 @@
 .email,
 .password {
   width: 100%;
+  position: relative;
   max-width: 25rem;
   display: flex;
   flex-direction: column;
@@ -94,10 +95,11 @@
   cursor: pointer;
 }
 
-.pwToggle {
-  width: 1rem;
-  height: 1rem;
+.passwordToggle {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
   position: absolute;
-  bottom: 1.1875rem;
+  top: 45px;
   right: 0.9375rem;
 }
