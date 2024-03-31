@@ -17,27 +17,26 @@ function CardList() {
     <div className={styles.cardsContainer}>
       <LinkSearchBar inputValue={inputValue} setInputValue={setInputValue} />
       <div className={styles.cardsList}>
-        {cardsArray &&
-          cardsArray
-            .filter((card) => {
-              return (
-                card.description?.includes(debouncedValue) ||
-                card.url?.includes(debouncedValue) ||
-                card.title?.includes(debouncedValue)
-              );
-            })
-            .map((card) => (
-              <Card
-                key={card.id}
-                id={card.id}
-                time={card.lastTimeString}
-                imgUrl={card.imgUrl}
-                title={card.title}
-                description={card.description}
-                date={card.uploadDate}
-                url={card.url}
-              />
-            ))}
+        {cardsArray
+          ?.filter((card) => {
+            return (
+              card.description?.includes(debouncedValue) ||
+              card.url?.includes(debouncedValue) ||
+              card.title?.includes(debouncedValue)
+            );
+          })
+          .map((card) => (
+            <Card
+              key={card.id}
+              id={card.id}
+              time={card.lastTimeString}
+              imgUrl={card.imgUrl}
+              title={card.title}
+              description={card.description}
+              date={card.uploadDate}
+              url={card.url}
+            />
+          ))}
       </div>
     </div>
   );

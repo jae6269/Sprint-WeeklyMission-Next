@@ -24,7 +24,7 @@ export interface SharedPageFolderOwner {
   folderName: string;
 }
 
-export interface Card {
+export interface CardDataType {
   id: number;
   url: string;
   imgUrl?: string;
@@ -32,7 +32,7 @@ export interface Card {
   description: string;
 }
 
-export interface SharedPageLink extends Card {
+export interface SharedPageLink extends CardDataType {
   lastTimeString: string;
   uploadDate: string;
 }

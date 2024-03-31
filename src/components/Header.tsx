@@ -2,9 +2,12 @@ import React from 'react';
 import Link from 'next/link';
 import styles from '../styles/header.module.css';
 import Profile from './Information';
-import { HeaderProfileProps } from '../types/interfaces/props';
 
-function Header({ url }: HeaderProfileProps) {
+interface HeaderProp {
+  url: string;
+}
+
+function Header({ url }: HeaderProp) {
   return (
     <header className={styles.header}>
       <nav className={styles.navBar}>

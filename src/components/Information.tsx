@@ -1,8 +1,11 @@
 import styles from '../styles/information.module.css';
 import useInformationData from '../hooks/useInformationData';
-import { InformationProps } from '../types/interfaces/props';
 
-function Information({ url }: InformationProps) {
+interface InformationProp {
+  url: string;
+}
+
+function Information({ url }: InformationProp) {
   const myInfo = useInformationData(url);
 
   if (!myInfo) {
