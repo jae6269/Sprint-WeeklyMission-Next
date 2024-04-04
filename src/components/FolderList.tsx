@@ -45,11 +45,11 @@ function FolderList() {
             folders={folders}
             handleClick={handleSortButtonClick}
             selectedId={selectedFolder.id}
-          ></FolderSortBar>
+          />
           <FolderOptionBar
             text={selectedFolder.name}
             selectedFolderId={selectedFolder.id}
-          ></FolderOptionBar>
+          />
 
           {
             //links의 유무에 따라서 랜더링

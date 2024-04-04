@@ -10,9 +10,10 @@ import { ClickFunctionType } from '../types/functionsType';
   폴더페이지에서 Header 컴포넌트 아래의
   링크추가 영역 컴포넌트입니다.
 */
+const ADD_PLACEHOLDER = '링크를 추가해 보세요';
+
 function LinkAddBar() {
   const { handleModalOpen } = useContext(ModalContext)!;
-  const placeholder = '링크를 추가해 보세요';
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleLinkAddModalOpen: ClickFunctionType = (e) => {
@@ -27,7 +28,7 @@ function LinkAddBar() {
           <LinkIcon className="link-add__bar--img" alt="linkIcon" />
           <input
             className={styles.linkInput}
-            placeholder={placeholder}
+            placeholder={ADD_PLACEHOLDER}
             id="link-add__bar--input"
           />
         </div>
