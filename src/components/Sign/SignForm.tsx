@@ -36,10 +36,14 @@ export default function SignForm({ type }: SignFormProp) {
     formState: { errors },
   } = useForm<SignForm>({ mode: 'onBlur' });
 
-  const handlePasswordToggle = () => {
+  const handlePasswordToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     setIsPasswordShown(!isPasswordShown);
   };
-  const handlePasswordConfirmToggle = () => {
+  const handlePasswordConfirmToggle = (
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    e.preventDefault();
     setIsPasswordConfirmShown(!isPasswordConfirmShown);
   };
 

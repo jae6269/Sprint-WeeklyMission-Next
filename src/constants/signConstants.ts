@@ -1,8 +1,8 @@
 export const SIGN_IN = 'sign_in';
 export const SIGN_UP = 'sign_up';
-export const EMAIL_PLACEHOLDER = 'Enter email address';
-export const PW_PLACEHOLDER = 'Enter password';
-export const PW_REPEAT_PLACEHOLDER = 'Enter password again';
+export const EMAIL_PLACEHOLDER = '이메일을 입력해 주세요.';
+export const PW_PLACEHOLDER = '비밀번호를 입력해 주세요.';
+export const PW_REPEAT_PLACEHOLDER = '비밀번호를 다시 입력해 주세요.';
 
 export const PASSWORD_EMPTY_ERROR_MESSAGE = '비밀번호를 입력해주세요.';
 export const PASSWORD_MISMATCH_ERROR_MESSAGE = '비밀번호가 일치하지 않습니다.';
