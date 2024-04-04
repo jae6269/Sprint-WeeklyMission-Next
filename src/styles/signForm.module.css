@@ -1,0 +1,83 @@
+.signForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.email,
+.password,
+.passwordConfirm {
+  width: 100%;
+  position: relative;
+  max-width: 25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.errorMessage {
+  color: var(--Linkbrary-red, #ff5b56);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.signLabel {
+  color: var(--black, #000);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.signInput {
+  display: flex;
+  position: relative;
+  padding: 18px 15px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--Linkbrary-gray20, #ccd5e3);
+  background: var(--Linkbrary-white, #fff);
+}
+.signInput:focus {
+  outline: none;
+  border: 1px solid #6d6afe;
+}
+
+.button {
+  display: flex;
+  width: 100%;
+  max-width: 25rem;
+  padding: 16px 20px;
+  margin-top: 6px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: var(
+    --gra-purpleblue-to-skyblue,
+    linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)
+  );
+  border: none;
+  color: var(--Grey-Light, #f5f5f5);
+  font-family: 'Pretendard';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.passwordToggle {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  top: 45px;
+  right: 0.9375rem;
+}
