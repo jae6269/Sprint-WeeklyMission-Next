@@ -11,29 +11,25 @@ import useFoldersData from '../hooks/useFoldersData';
 
 import { ClickSortButton } from '../types/functionsType';
 import { useDebounce } from '../hooks/useDebounce';
+import { Folder } from '../types/interfaces/fetchDatas';
+import { FolderPageLink } from '@/pages/folder';
 
 //폴더리스트 컴포넌트(폴더 페이지)
+interface FolderListProps {
+  folders: Folder[];
+  links: FolderPageLink[];
+}
 
-function FolderList() {
+function FolderList({ folders, links }: FolderListProps) {
   //선택된 폴더 state (초기값은 "전체"폴더)
   const [selectedFolder, setSelectedFolder] = useState({ id: 1, name: '전체' });
   //LinkSearchBar Input state
   const [inputValue, setInputValue] = useState<string>('');
   const debouncedValue = useDebounce(inputValue);
-  //URL State
-  const [linksFetchUrl, setLinksFetchUrl] = useState(USERS_LINKS_URL);
-  const [foldersFetchUrl, setFoldersFetchUrl] = useState(USERS_FOLDERS_URL);
-
-  //커스텀 훅을 이용해서 데이터 Fetch
-  const links = useLinksData(linksFetchUrl);
-  const folders = useFoldersData(foldersFetchUrl);
 
   //FolderList -> FolderSortBar -> SortButton으로 내려주는 함수
   const handleSortButtonClick: ClickSortButton = (newSelectedFolder) => {
     setSelectedFolder(newSelectedFolder);
-    const query =
-      newSelectedFolder.id === 1 ? '' : `?folderId=${newSelectedFolder.id}`;
-    setLinksFetchUrl(USERS_LINKS_URL + query);
   };
 
   return (
@@ -74,7 +70,7 @@ function FolderList() {
                       time={card.lastTimeString}
                       imgUrl={card.imgUrl}
                       title={card.title}
-                      description={card.description}
+                      description={card.description || 'No description'}
                       date={card.uploadDate}
                       url={card.url}
                     />

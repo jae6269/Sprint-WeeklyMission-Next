@@ -15,9 +15,15 @@ import {
   EDIT_TYPE,
   SHARE_TYPE,
 } from '@/src/constants/modalConstants';
-import { USER_URL } from '@/src/constants/urls';
+import {
+  USERS_FOLDERS_URL,
+  USERS_LINKS_URL,
+  USER_URL,
+} from '@/src/constants/urls';
 import { ModalClose, ModalOpen } from '@/src/types/functionsType';
-import { FolderPageUserType } from '@/src/types/interfaces/fetchDatas';
+import { Folder, FolderPageUserType } from '@/src/types/interfaces/fetchDatas';
+import { ENTIRE_FOLDER } from '@/src/constants/fetchConstants';
+import { formatDate, getLastTime } from '@/src/utils/timeCalculater';
 
 export const ModalContext = createContext<{
   modalType: string;
@@ -26,15 +32,55 @@ export const ModalContext = createContext<{
   handleModalClose: ModalClose;
 } | null>(null);
 
+interface Link {
+  id: number;
+  created_at: string;
+  updated_at: string | null;
+  url: string;
+  title: string;
+  description: string | null;
+  image_source: string | null;
+  folder_id: number | null;
+}
+
+interface LinksResult {
+  data: Link[];
+}
+
+export interface FolderPageLink {
+  id: number;
+  url: string;
+  imgUrl: string | null;
+  title: string;
+  description: string | null;
+  lastTimeString: string;
+  uploadDate: string;
+}
+
 export async function getServerSideProps() {
   const userResponse = await fetch(USER_URL);
+  const foldersResponse = await fetch(USERS_FOLDERS_URL);
+  const linksResponse = await fetch(USERS_LINKS_URL);
   const user: FolderPageUserType = await userResponse.json();
-
-  return { props: { user } };
+  const foldersResult = await foldersResponse.json();
+  const linksResult: LinksResult = await linksResponse.json();
+  const folders: Folder[] = [ENTIRE_FOLDER, ...foldersResult.data];
+  const links: FolderPageLink[] = linksResult.data.map((link) => ({
+    id: link.id,
+    url: link.url,
+    imgUrl: link.image_source,
+    title: link.title,
+    description: link.description,
+    lastTimeString: getLastTime(link.created_at),
+    uploadDate: formatDate(link.created_at),
+  }));
+  return { props: { user, folders, links } };
 }
 
 function FolderPage({
   user,
+  folders,
+  links,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   //modal states
   const [modalType, setModalType] = useState('');
@@ -90,7 +136,7 @@ function FolderPage({
         <LinkAddBar />
       </div>
 
-      <FolderList />
+      <FolderList folders={folders} links={links} />
       <div ref={footerRef}>
         <Footer />
       </div>

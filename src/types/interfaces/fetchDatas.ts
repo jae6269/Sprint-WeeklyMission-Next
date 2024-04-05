@@ -43,12 +43,12 @@ interface LinkCount {
 
 export interface Folder {
   id: number;
-  created_at?: string;
+  created_at: string;
   name: string;
-  user_id?: string;
-  favorite?: boolean;
+  user_id: string;
+  favorite: boolean;
   link: LinkCount;
-  isClicked?: boolean;
+  isClicked: boolean | null;
 }
 
 export interface Link {
