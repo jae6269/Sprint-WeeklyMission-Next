@@ -1,12 +1,13 @@
 import React from 'react';
 import styles from '../styles/profile.module.css';
-import useCardsData from '../hooks/useCardsData';
-import { PROFILE } from '../constants/fetchConstants';
-import { SAMPLE_FOLDER_URL } from '../constants/urls';
+import { SharedPageFolderOwner } from '../types/interfaces/fetchDatas';
 
-function Profile() {
-  const ownerInfo: any = useCardsData(PROFILE, SAMPLE_FOLDER_URL);
-  const { ownerImg, ownerName, folderName } = ownerInfo;
+interface ProfileProp {
+  owner: SharedPageFolderOwner;
+}
+
+function Profile({ owner }: ProfileProp) {
+  const { ownerImg, ownerName, folderName } = owner;
   return (
     <div className={styles.profileContainer}>
       <div className={styles.folderOwner}>

@@ -2,22 +2,22 @@ import { useState } from 'react';
 import styles from '../styles/cardList.module.css';
 import Card from './Card';
 import LinkSearchBar from './LinkSearchBar';
-import useCardsData from '../hooks/useCardsData';
 import { useDebounce } from '../hooks/useDebounce';
-import { CARDS } from '../constants/fetchConstants';
-import { SAMPLE_FOLDER_URL } from '../constants/urls';
 import { SharedPageLink } from '../types/interfaces/fetchDatas';
 
-function CardList() {
+interface CardListProp {
+  links: SharedPageLink[];
+}
+
+function CardList({ links }: CardListProp) {
   const [inputValue, setInputValue] = useState<string>('');
   const debouncedValue = useDebounce(inputValue);
-  const cardsArray = useCardsData(CARDS, SAMPLE_FOLDER_URL) as SharedPageLink[];
 
   return (
     <div className={styles.cardsContainer}>
       <LinkSearchBar inputValue={inputValue} setInputValue={setInputValue} />
       <div className={styles.cardsList}>
-        {cardsArray
+        {links
           ?.filter((card) => {
             return (
               card.description?.includes(debouncedValue) ||

@@ -27,7 +27,7 @@ export interface SharedPageFolderOwner {
 export interface CardDataType {
   id: number;
   url: string;
-  imgUrl?: string;
+  imgUrl: string | null;
   title: string;
   description: string;
 }
@@ -48,5 +48,28 @@ export interface Folder {
   user_id?: string;
   favorite?: boolean;
   link: LinkCount;
-  isClicked?: boolean | null;
+  isClicked?: boolean;
+}
+
+export interface Link {
+  id: number;
+  createdAt: string;
+  url: string;
+  title: string;
+  description: string;
+  imageSource: string | null;
+}
+export interface Owner {
+  id: number;
+  name: string;
+  profileImageSource: string;
+}
+
+export interface SharedPageFolder {
+  folder: {
+    id: number;
+    name: string;
+    owner: Owner;
+    links: Link[];
+  };
 }

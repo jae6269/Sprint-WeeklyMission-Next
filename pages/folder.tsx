@@ -1,5 +1,6 @@
 import { useState, createContext, useEffect, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
+import type { InferGetServerSidePropsType, GetServerSideProps } from 'next';
 import FolderList from '@/src/components/FolderList';
 import Footer from '@/src/components/Footer';
 import Header from '@/src/components/Header';
@@ -16,6 +17,7 @@ import {
 } from '@/src/constants/modalConstants';
 import { USER_URL } from '@/src/constants/urls';
 import { ModalClose, ModalOpen } from '@/src/types/functionsType';
+import { FolderPageUserType } from '@/src/types/interfaces/fetchDatas';
 
 export const ModalContext = createContext<{
   modalType: string;
@@ -24,7 +26,16 @@ export const ModalContext = createContext<{
   handleModalClose: ModalClose;
 } | null>(null);
 
-function FolderPage() {
+export async function getServerSideProps() {
+  const userResponse = await fetch(USER_URL);
+  const user: FolderPageUserType = await userResponse.json();
+
+  return { props: { user } };
+}
+
+function FolderPage({
+  user,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   //modal states
   const [modalType, setModalType] = useState('');
   const [modalPurpose, setModalPurpose] = useState();
@@ -71,7 +82,7 @@ function FolderPage() {
       {modalType === EDIT_TYPE && <EditModal />}
       {modalType === SHARE_TYPE && <ShareModal />}
 
-      <Header url={USER_URL} />
+      <Header user={user} />
       <div ref={linkAddBarRef}>
         <LinkAddBar />
       </div>

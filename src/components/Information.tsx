@@ -1,14 +1,11 @@
 import styles from '../styles/information.module.css';
-import useInformationData from '../hooks/useInformationData';
+import {
+  FolderPageUserType,
+  SharedPageUser,
+} from '../types/interfaces/fetchDatas';
 
-interface InformationProp {
-  url: string;
-}
-
-function Information({ url }: InformationProp) {
-  const myInfo = useInformationData(url);
-
-  if (!myInfo) {
+function Information({ user }: { user: any }) {
+  if (!user) {
     return <button>로그인</button>;
   }
 
@@ -16,12 +13,10 @@ function Information({ url }: InformationProp) {
     <div className={styles.infoContainer}>
       <img
         className={styles.image}
-        src={myInfo.profileImageSource || myInfo.data[0].image_source}
+        src={user.profileImageSource || user.data[0].image_source}
         alt="ProfileImg"
       />
-      <span className={styles.email}>
-        {myInfo.email || myInfo.data[0].email}
-      </span>
+      <span className={styles.email}>{user.email || user.data[0].email}</span>
     </div>
   );
 }
