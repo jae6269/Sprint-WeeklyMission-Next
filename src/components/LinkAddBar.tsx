@@ -4,7 +4,6 @@ import LinkIcon from '@/public/svgs/linkIcon.svg';
 import Button from './Button';
 import { ModalContext } from '@/pages/folder';
 import { ADD_TYPE } from '../constants/modalConstants';
-import { ClickFunctionType } from '../types/functionsType';
 
 /*
   폴더페이지에서 Header 컴포넌트 아래의
@@ -16,8 +15,7 @@ function LinkAddBar() {
   const { handleModalOpen } = useContext(ModalContext)!;
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleLinkAddModalOpen: ClickFunctionType = (e) => {
-    e.preventDefault();
+  const handleLinkAddModalOpen = () => {
     const link = inputRef.current?.value;
     handleModalOpen(ADD_TYPE, link);
   };
@@ -29,10 +27,11 @@ function LinkAddBar() {
           <input
             className={styles.linkInput}
             placeholder={ADD_PLACEHOLDER}
+            ref={inputRef}
             id="link-add__bar--input"
           />
         </div>
-        <Button type="submit" onClick={handleLinkAddModalOpen}>
+        <Button type="button" onClick={handleLinkAddModalOpen}>
           추가하기
         </Button>
       </form>

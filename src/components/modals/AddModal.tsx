@@ -36,21 +36,20 @@ function AddModal({ folders }: { folders: Folder[] }) {
         <FolderList>
           {folders.map((folder) => {
             const isClicked = folder.id === clickedFolderId;
+            if (folder.id === 1) {
+              return null;
+            }
             return (
-              folder.id !== 1 && (
-                <FolderButton
-                  key={folder.id}
-                  onClick={(e) => handleFolderButtonClick(e, folder.id)}
-                >
-                  <FolderInfo>
-                    <FolderName $isClicked={isClicked}>
-                      {folder.name}
-                    </FolderName>
-                    <LinkNumber>{folder.link.count}개 링크</LinkNumber>
-                  </FolderInfo>
-                  {isClicked && <CheckedIcon alt="checked" />}
-                </FolderButton>
-              )
+              <FolderButton
+                key={folder.id}
+                onClick={(e) => handleFolderButtonClick(e, folder.id)}
+              >
+                <FolderInfo>
+                  <FolderName $isClicked={isClicked}>{folder.name}</FolderName>
+                  <LinkNumber>{folder.link.count}개 링크</LinkNumber>
+                </FolderInfo>
+                {isClicked && <CheckedIcon alt="checked" />}
+              </FolderButton>
             );
           })}
         </FolderList>

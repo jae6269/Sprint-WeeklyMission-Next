@@ -84,9 +84,10 @@ export const Title = styled.p`
 `;
 
 export const Name = styled.p`
+  width: 100%;
+  word-break: break-all;
   color: var(--Linkbrary-gray60, #9fa6b2);
   text-align: center;
-  font-family: Pretendard;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
