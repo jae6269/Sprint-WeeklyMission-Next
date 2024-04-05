@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import styles from '../styles/linkSearchBar.module.css';
 import SearchIcon from '@/public/svgs/searchIcon.svg';
 import SearchClearIcon from '@/public/svgs/searchClearIcon.svg';
@@ -6,8 +5,6 @@ import SearchClearIcon from '@/public/svgs/searchClearIcon.svg';
 const INPUT_PLACEHOLDER = '링크를 검색해 보세요.';
 
 function LinkSearchBar({ inputValue, setInputValue }: any) {
-  const inputRef = useRef<HTMLInputElement>(null);
-
   const handleInputValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.currentTarget.value);
   };
@@ -17,9 +14,6 @@ function LinkSearchBar({ inputValue, setInputValue }: any) {
   ) => {
     e.preventDefault();
     setInputValue('');
-    if (inputRef.current) {
-      inputRef.current.value = '';
-    }
   };
 
   return (
@@ -29,7 +23,7 @@ function LinkSearchBar({ inputValue, setInputValue }: any) {
         <input
           id="search--input"
           className={styles.searchInput}
-          ref={inputRef}
+          value={inputValue}
           placeholder={INPUT_PLACEHOLDER}
           onChange={handleInputValueChange}
         />
