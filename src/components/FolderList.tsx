@@ -5,10 +5,6 @@ import FolderSortBar from './FolderSortBar';
 import FolderOptionBar from './FolderOptionBar';
 import { FolderAddButtonMobile } from './FolderAddButton';
 import Card from './Card';
-import { USERS_LINKS_URL, USERS_FOLDERS_URL } from '../constants/urls';
-import useLinksData from '../hooks/useLinksData';
-import useFoldersData from '../hooks/useFoldersData';
-
 import { ClickSortButton } from '../types/functionsType';
 import { useDebounce } from '../hooks/useDebounce';
 import { Folder } from '../types/interfaces/fetchDatas';

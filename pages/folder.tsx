@@ -123,7 +123,7 @@ function FolderPage({
         handleModalClose,
       }}
     >
-      {modalType === ADD_TYPE && <AddModal />}
+      {modalType === ADD_TYPE && <AddModal folders={folders} />}
       {modalType === DELETE_TYPE && <DeleteModal />}
       {modalType === EDIT_TYPE && <EditModal />}
       {modalType === SHARE_TYPE && <ShareModal />}
