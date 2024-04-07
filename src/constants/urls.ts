@@ -1,3 +1,7 @@
+export const BASE_URL = 'https://bootcamp-api.codeit.kr';
+
+export const SIGN_IN_URL = 'https://bootcamp-api.codeit.kr/api/sign-in';
+
 export const SAMPLE_FOLDER_URL =
   'https://bootcamp-api.codeit.kr/api/sample/folder';
 

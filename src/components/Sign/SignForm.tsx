@@ -16,6 +16,8 @@ import {
   PASSWORD_EMPTY_ERROR_MESSAGE,
   SIGN_IN,
 } from '@/src/constants/signConstants';
+import { SIGN_IN_URL } from '@/src/constants/urls';
+import { Router, useRouter } from 'next/router';
 
 interface SignFormProp {
   type: 'sign_in' | 'sign_up';
@@ -35,6 +37,7 @@ export default function SignForm({ type }: SignFormProp) {
     getValues,
     formState: { errors },
   } = useForm<SignForm>({ mode: 'onBlur' });
+  const router = useRouter();
 
   const handlePasswordToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -47,11 +50,25 @@ export default function SignForm({ type }: SignFormProp) {
     setIsPasswordConfirmShown(!isPasswordConfirmShown);
   };
 
+  const handleSignIn = async (data: any) => {
+    if (type === SIGN_IN) {
+      const res = await fetch(SIGN_IN_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      if (res.status === 200) {
+        router.push('/folder');
+      } else {
+        alert('로그인 정보가 일치하지 않아요.');
+      }
+    }
+  };
+
   return (
-    <form
-      className={styles.signForm}
-      onSubmit={handleSubmit((data) => alert(JSON.stringify(data)))}
-    >
+    <form className={styles.signForm} onSubmit={handleSubmit(handleSignIn)}>
       <div className={styles.email}>
         <label className={styles.signLabel} htmlFor="email">
           이메일
