@@ -15,9 +15,11 @@ import {
   PASSWORD_MISMATCH_ERROR_MESSAGE,
   PASSWORD_EMPTY_ERROR_MESSAGE,
   SIGN_IN,
+  EMAIL_ERROR,
+  PASSWORD_ERROR,
 } from '@/src/constants/signConstants';
 import { SIGN_IN_URL } from '@/src/constants/urls';
-import { Router, useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 interface SignFormProp {
   type: 'sign_in' | 'sign_up';
@@ -35,6 +37,7 @@ export default function SignForm({ type }: SignFormProp) {
     register,
     handleSubmit,
     getValues,
+    setError,
     formState: { errors },
   } = useForm<SignForm>({ mode: 'onBlur' });
   const router = useRouter();
@@ -50,7 +53,8 @@ export default function SignForm({ type }: SignFormProp) {
     setIsPasswordConfirmShown(!isPasswordConfirmShown);
   };
 
-  const handleSignIn = async (data: any) => {
+  const handleSignIn = async (data: SignForm) => {
+    console.log(data);
     if (type === SIGN_IN) {
       const res = await fetch(SIGN_IN_URL, {
         method: 'POST',
@@ -62,7 +66,8 @@ export default function SignForm({ type }: SignFormProp) {
       if (res.status === 200) {
         router.push('/folder');
       } else {
-        alert('로그인 정보가 일치하지 않아요.');
+        setError('email', EMAIL_ERROR);
+        setError('password', PASSWORD_ERROR);
       }
     }
   };
