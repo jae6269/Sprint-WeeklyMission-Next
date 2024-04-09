@@ -18,7 +18,7 @@ import {
   EMAIL_ERROR,
   PASSWORD_ERROR,
 } from '@/src/constants/signConstants';
-import { SIGN_IN_URL } from '@/src/constants/urls';
+import { SIGN_IN_URL, SIGN_UP_URL } from '@/src/constants/urls';
 import { useRouter } from 'next/router';
 
 interface SignFormProp {
@@ -27,7 +27,7 @@ interface SignFormProp {
 interface SignForm {
   email: string;
   password: string;
-  passwordConfirm: string;
+  passwordConfirm?: string;
 }
 
 export default function SignForm({ type }: SignFormProp) {
@@ -54,7 +54,8 @@ export default function SignForm({ type }: SignFormProp) {
   };
 
   const handleSignIn = async (data: SignForm) => {
-    console.log(data);
+    delete data.passwordConfirm;
+
     if (type === SIGN_IN) {
       const res = await fetch(SIGN_IN_URL, {
         method: 'POST',
@@ -68,6 +69,17 @@ export default function SignForm({ type }: SignFormProp) {
       } else {
         setError('email', EMAIL_ERROR);
         setError('password', PASSWORD_ERROR);
+      }
+    } else if (type === SIGN_UP) {
+      const res = await fetch(SIGN_UP_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      if (res.status === 200) {
+        router.push('/folder');
       }
     }
   };
@@ -132,7 +144,7 @@ export default function SignForm({ type }: SignFormProp) {
             placeholder={PW_REPEAT_PLACEHOLDER}
             {...register('passwordConfirm', {
               required: PASSWORD_EMPTY_ERROR_MESSAGE,
-              validate: (val: string) => {
+              validate: (val: string | undefined) => {
                 const password = getValues('password');
                 return password === val || PASSWORD_MISMATCH_ERROR_MESSAGE;
               },
