@@ -15,7 +15,11 @@ import {
   PASSWORD_MISMATCH_ERROR_MESSAGE,
   PASSWORD_EMPTY_ERROR_MESSAGE,
   SIGN_IN,
+  EMAIL_ERROR,
+  PASSWORD_ERROR,
 } from '@/src/constants/signConstants';
+import { SIGN_IN_URL, SIGN_UP_URL } from '@/src/constants/urls';
+import { useRouter } from 'next/router';
 
 interface SignFormProp {
   type: 'sign_in' | 'sign_up';
@@ -23,7 +27,7 @@ interface SignFormProp {
 interface SignForm {
   email: string;
   password: string;
-  passwordConfirm: string;
+  passwordConfirm?: string;
 }
 
 export default function SignForm({ type }: SignFormProp) {
@@ -33,21 +37,55 @@ export default function SignForm({ type }: SignFormProp) {
     register,
     handleSubmit,
     getValues,
+    setError,
     formState: { errors },
   } = useForm<SignForm>({ mode: 'onBlur' });
+  const router = useRouter();
 
-  const handlePasswordToggle = () => {
+  const handlePasswordToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     setIsPasswordShown(!isPasswordShown);
   };
-  const handlePasswordConfirmToggle = () => {
+  const handlePasswordConfirmToggle = (
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    e.preventDefault();
     setIsPasswordConfirmShown(!isPasswordConfirmShown);
   };
 
+  const handleSignIn = async (data: SignForm) => {
+    delete data.passwordConfirm;
+
+    if (type === SIGN_IN) {
+      const res = await fetch(SIGN_IN_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      if (res.status === 200) {
+        router.push('/folder');
+      } else {
+        setError('email', EMAIL_ERROR);
+        setError('password', PASSWORD_ERROR);
+      }
+    } else if (type === SIGN_UP) {
+      const res = await fetch(SIGN_UP_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      if (res.status === 200) {
+        router.push('/folder');
+      }
+    }
+  };
+
   return (
-    <form
-      className={styles.signForm}
-      onSubmit={handleSubmit((data) => alert(JSON.stringify(data)))}
-    >
+    <form className={styles.signForm} onSubmit={handleSubmit(handleSignIn)}>
       <div className={styles.email}>
         <label className={styles.signLabel} htmlFor="email">
           이메일
@@ -106,7 +144,7 @@ export default function SignForm({ type }: SignFormProp) {
             placeholder={PW_REPEAT_PLACEHOLDER}
             {...register('passwordConfirm', {
               required: PASSWORD_EMPTY_ERROR_MESSAGE,
-              validate: (val: string) => {
+              validate: (val: string | undefined) => {
                 const password = getValues('password');
                 return password === val || PASSWORD_MISMATCH_ERROR_MESSAGE;
               },

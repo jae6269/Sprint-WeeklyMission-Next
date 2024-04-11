@@ -12,15 +12,12 @@ import {
 import ModalCloseIcon from '@/public/svgs/modalColseIcon.svg';
 import CheckedIcon from '@/public/svgs/checkIcon.svg';
 import { ModalContext } from '@/pages/folder';
-import useFoldersData from '@/src/hooks/useFoldersData';
-import { USERS_FOLDERS_URL } from '@/src/constants/urls';
 import { ClickFolderButton } from '@/src/types/functionsType';
+import { Folder } from '@/src/types/interfaces/fetchDatas';
 
-function AddModal() {
+function AddModal({ folders }: { folders: Folder[] }) {
   const [clickedFolderId, setClickedFolderId] = useState<number>();
   const { modalPurpose, handleModalClose } = useContext(ModalContext)!;
-
-  const folders = useFoldersData(USERS_FOLDERS_URL);
 
   const handleFolderButtonClick: ClickFolderButton = (e, folderId) => {
     e.preventDefault();
@@ -39,21 +36,20 @@ function AddModal() {
         <FolderList>
           {folders.map((folder) => {
             const isClicked = folder.id === clickedFolderId;
+            if (folder.id === 1) {
+              return null;
+            }
             return (
-              folder.id !== 1 && (
-                <Folder
-                  key={folder.id}
-                  onClick={(e) => handleFolderButtonClick(e, folder.id)}
-                >
-                  <FolderInfo>
-                    <FolderName $isClicked={isClicked}>
-                      {folder.name}
-                    </FolderName>
-                    <LinkNumber>{folder.link.count}개 링크</LinkNumber>
-                  </FolderInfo>
-                  {isClicked && <CheckedIcon alt="checked" />}
-                </Folder>
-              )
+              <FolderButton
+                key={folder.id}
+                onClick={(e) => handleFolderButtonClick(e, folder.id)}
+              >
+                <FolderInfo>
+                  <FolderName $isClicked={isClicked}>{folder.name}</FolderName>
+                  <LinkNumber>{folder.link.count}개 링크</LinkNumber>
+                </FolderInfo>
+                {isClicked && <CheckedIcon alt="checked" />}
+              </FolderButton>
             );
           })}
         </FolderList>
@@ -72,7 +68,7 @@ const FolderList = styled.div`
   gap: 4px;
   overflow-y: scroll;
 `;
-const Folder = styled.button`
+const FolderButton = styled.button`
   width: 100%;
   display: flex;
   padding: 8px;
