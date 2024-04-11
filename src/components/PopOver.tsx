@@ -32,8 +32,12 @@ function PopOver({ id, url }: PopOverProps) {
 
   return (
     <PopOverContainer>
-      <Button onClick={handleLinkDeleteModalOpen}>삭제하기</Button>
-      <Button onClick={handleLinkAddModalOpen}>폴더에 추가</Button>
+      <Button type="button" onClick={handleLinkDeleteModalOpen}>
+        삭제하기
+      </Button>
+      <Button type="button" onClick={handleLinkAddModalOpen}>
+        폴더에 추가
+      </Button>
     </PopOverContainer>
   );
 }

@@ -1,5 +1,6 @@
 import { useState, createContext, useEffect, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
+import type { InferGetServerSidePropsType, GetServerSideProps } from 'next';
 import FolderList from '@/src/components/FolderList';
 import Footer from '@/src/components/Footer';
 import Header from '@/src/components/Header';
@@ -14,8 +15,15 @@ import {
   EDIT_TYPE,
   SHARE_TYPE,
 } from '@/src/constants/modalConstants';
-import { USER_URL } from '@/src/constants/urls';
+import {
+  USERS_FOLDERS_URL,
+  USERS_LINKS_URL,
+  USER_URL,
+} from '@/src/constants/urls';
 import { ModalClose, ModalOpen } from '@/src/types/functionsType';
+import { Folder, FolderPageUserType } from '@/src/types/interfaces/fetchDatas';
+import { ENTIRE_FOLDER } from '@/src/constants/fetchConstants';
+import { formatDate, getLastTime } from '@/src/utils/timeCalculater';
 
 export const ModalContext = createContext<{
   modalType: string;
@@ -24,7 +32,56 @@ export const ModalContext = createContext<{
   handleModalClose: ModalClose;
 } | null>(null);
 
-function FolderPage() {
+interface Link {
+  id: number;
+  created_at: string;
+  updated_at: string | null;
+  url: string;
+  title: string;
+  description: string | null;
+  image_source: string | null;
+  folder_id: number | null;
+}
+
+interface LinksResult {
+  data: Link[];
+}
+
+export interface FolderPageLink {
+  id: number;
+  url: string;
+  imgUrl: string | null;
+  title: string;
+  description: string | null;
+  lastTimeString: string;
+  uploadDate: string;
+}
+
+export async function getServerSideProps() {
+  const userResponse = await fetch(USER_URL);
+  const foldersResponse = await fetch(USERS_FOLDERS_URL);
+  const linksResponse = await fetch(USERS_LINKS_URL);
+  const user: FolderPageUserType = await userResponse.json();
+  const foldersResult = await foldersResponse.json();
+  const linksResult: LinksResult = await linksResponse.json();
+  const folders: Folder[] = [ENTIRE_FOLDER, ...foldersResult.data];
+  const links: FolderPageLink[] = linksResult.data.map((link) => ({
+    id: link.id,
+    url: link.url,
+    imgUrl: link.image_source,
+    title: link.title,
+    description: link.description,
+    lastTimeString: getLastTime(link.created_at),
+    uploadDate: formatDate(link.created_at),
+  }));
+  return { props: { user, folders, links } };
+}
+
+function FolderPage({
+  user,
+  folders,
+  links,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   //modal states
   const [modalType, setModalType] = useState('');
   const [modalPurpose, setModalPurpose] = useState();
@@ -66,12 +123,12 @@ function FolderPage() {
         handleModalClose,
       }}
     >
-      {modalType === ADD_TYPE && <AddModal />}
+      {modalType === ADD_TYPE && <AddModal folders={folders} />}
       {modalType === DELETE_TYPE && <DeleteModal />}
       {modalType === EDIT_TYPE && <EditModal />}
       {modalType === SHARE_TYPE && <ShareModal />}
 
-      <Header url={USER_URL} />
+      <Header user={user} />
       <div ref={linkAddBarRef}>
         <LinkAddBar />
       </div>
@@ -79,7 +136,7 @@ function FolderPage() {
         <LinkAddBar />
       </div>
 
-      <FolderList />
+      <FolderList folders={folders} links={links} />
       <div ref={footerRef}>
         <Footer />
       </div>
