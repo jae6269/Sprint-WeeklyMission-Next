@@ -1,4 +1,4 @@
-import type { InferGetServerSidePropsType } from 'next';
+import type { InferGetServerSidePropsType, GetServerSideProps } from 'next';
 import Footer from '@/src/components/Footer';
 import Header from '@/src/components/Header';
 import Profile from '@/src/components/Profile';
@@ -12,7 +12,8 @@ import {
 } from '@/src/types/interfaces/fetchDatas';
 import { formatDate, getLastTime } from '@/src/utils/timeCalculater';
 
-export async function getServerSideProps() {
+export const getServerSideProps = (async (context) => {
+  const { folderId } = context.query;
   const userResponse = await fetch(SAMPLE_USER_URL);
   const folderResponse = await fetch(SAMPLE_FOLDER_URL);
   const user: SharedPageUser = await userResponse.json();
@@ -33,7 +34,11 @@ export async function getServerSideProps() {
     uploadDate: formatDate(link.createdAt),
   }));
   return { props: { user, owner, links } };
-}
+}) satisfies GetServerSideProps<{
+  user: SharedPageUser;
+  owner: SharedPageFolderOwner;
+  links: SharedPageLink[];
+}>;
 
 export default function Shared({
   user,

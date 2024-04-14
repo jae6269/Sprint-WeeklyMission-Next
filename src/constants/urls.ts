@@ -8,6 +8,8 @@ export const CHECK_EMAIL_URL = 'https://bootcamp-api.codeit.kr/api/check-email';
 export const SAMPLE_FOLDER_URL =
   'https://bootcamp-api.codeit.kr/api/sample/folder';
 
+export const FOLDER_URL = 'https://bootcamp-api.codeit.kr/api/folders';
+
 export const SAMPLE_USER_URL = 'https://bootcamp-api.codeit.kr/api/sample/user';
 
 export const USER_URL = 'https://bootcamp-api.codeit.kr/api/users/1';
